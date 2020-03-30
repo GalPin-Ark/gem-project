@@ -9,7 +9,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import { Link } from 'gatsby'
 import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
-import BackgroundImage from 'gatsby-background-image'
 
 const IndexPage = () => {
   const {placeholderImage, astronaut,
