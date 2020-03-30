@@ -9,6 +9,39 @@ import { useStaticQuery, graphql } from "gatsby"
 import { Link } from 'gatsby'
 import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
+import BackgroundImage from 'gatsby-background-image'
+
+const IndexPage = () => {
+  const {placeholderImage, astronaut,
+    seamlessBackground} = useStaticQuery(graphql`
+    query {
+      placeholderImage: file(relativePath: { eq: "gatsby-uni.jpg" }) {
+        childImageSharp {
+          fluid(quality: 100, maxWidth: 1920) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      astronaut: file(relativePath: { eq: "gatsby-happy.jpg" }) {
+          childImageSharp {
+            fluid(quality: 100, maxWidth: 1920) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        seamlessBackground: file(
+          relativePath: { eq: "gatsby-dot.jpg" }
+        ) {
+          childImageSharp {
+            fluid(quality: 100, maxWidth: 1920) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+     
+    }
+
+  `)
 
 const content = [
   {
@@ -16,38 +49,23 @@ const content = [
     description:
       "Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras justo odio, dapibus ac facilisis.",
     button: "Read More",
-    image: "gatsby-fut.jpg"
+    image: placeholderImage.childImageSharp.fluid.src
   },
   {
     title: "Tortor Dapibus Commodo Aenean Quam",
     description:
       "Nullam id dolor id nibh ultricies vehicula ut id elit. Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui.",
     button: "Discover",
-    image: "1920Asset1.png"
+    image: astronaut.childImageSharp.fluid.src
   },
   {
     title: "Phasellus volutpat metus",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Duis mollis, est non commodo luctus, nisi erat porttitor ligula.",
     button: "Buy now",
-    image: "1920Asset2.png"
+    image: seamlessBackground.childImageSharp.fluid.src
   }
 ];
-
-const IndexPage = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      placeholderImage: file(relativePath: { eq: "gatsby-uni.jpg" }) {
-        publicURL
-        childImageSharp {
-          fluid(maxWidth: 1920) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
-
   
   return (
     <Layout page="Home">
@@ -68,6 +86,7 @@ const IndexPage = () => {
       </section> */}
 <Slider className="slider-wrapper" autoplay={10000}>
         {content.map((item, index) => (
+          
           <div
             key={index}
             className="slider-content"
