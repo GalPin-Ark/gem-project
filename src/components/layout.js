@@ -17,7 +17,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import "../styles/style.css"
 
 
-const Layout = ({ children }) => {
+const Layout = ({ children, page }) => {
 
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -32,10 +32,10 @@ const Layout = ({ children }) => {
       }
     }
   `)
-
+ 
   return (
     <>
-      <Header menuLinks={data.site.siteMetadata.menuLinks} siteTitle={data.site.siteMetadata.title} />
+      <Header menuLinks={data.site.siteMetadata.menuLinks} siteTitle={data.site.siteMetadata.title} page={page} />
       <div
         style={{
           margin: `0 auto`,

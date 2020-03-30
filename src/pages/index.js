@@ -2,19 +2,37 @@ import React from "react"
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
-import Checkout from "../components/checkout"
-import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Skius from './skius';
 import { useStaticQuery, graphql } from "gatsby"
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
 import { Link } from 'gatsby'
+import Slider from "react-animated-slider";
+import "react-animated-slider/build/horizontal.css";
 
+const content = [
+  {
+    title: "Vulputate Mollis Ultricies Fermentum Parturient",
+    description:
+      "Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Cras justo odio, dapibus ac facilisis.",
+    button: "Read More",
+    image: "gatsby-fut.jpg"
+  },
+  {
+    title: "Tortor Dapibus Commodo Aenean Quam",
+    description:
+      "Nullam id dolor id nibh ultricies vehicula ut id elit. Cras mattis consectetur purus sit amet fermentum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Donec sed odio dui.",
+    button: "Discover",
+    image: "1920Asset1.png"
+  },
+  {
+    title: "Phasellus volutpat metus",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Duis mollis, est non commodo luctus, nisi erat porttitor ligula.",
+    button: "Buy now",
+    image: "1920Asset2.png"
+  }
+];
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
@@ -30,10 +48,11 @@ const IndexPage = () => {
     }
   `)
 
+  
   return (
-    <Layout>
+    <Layout page="Home">
       <SEO title="Home" />
-      <section className="swiper-container swiper-slider" style={{ zIndex: `1`, backgroundImage: `url(${data.placeholderImage.childImageSharp.fluid.src})`, backgroundRepeat: `no-repeat`, backgroundSize: `cover`, backgroundPosition: `center bottom`, maxHeight: `35rem`, height: `25rem`, display: `flex`, alignItems: `center` }}>
+      {/* <section className="swiper-container swiper-slider" style={{ zIndex: `1`, backgroundImage: `url(${data.placeholderImage.childImageSharp.fluid.src})`, backgroundRepeat: `no-repeat`, backgroundSize: `cover`, backgroundPosition: `center bottom`, maxHeight: `35rem`, height: `25rem`, display: `flex`, alignItems: `center` }}>
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-12 text-center">
@@ -41,20 +60,28 @@ const IndexPage = () => {
               <p className="h6 text-white">Travel to the any corner of the world, without going around in circles.</p>
               <Button variant="contained" color="secondary" style={{ marginTop: `3rem` }}>
                 Buy Tour
-       <span className="material-icons"> shopping_cart</span>
+                <span className="material-icons"> shopping_cart</span>
               </Button>
             </div>
           </div>
         </div>
-      </section>
-
-      {/* <Container component="section" maxWidth={false} className="section-50 section-md-bottom-50 bg-wild-wand">
-      <div className="container">
-          <div className="row justify-content-center">
-          <Skius />
+      </section> */}
+<Slider className="slider-wrapper" autoplay={10000}>
+        {content.map((item, index) => (
+          <div
+            key={index}
+            className="slider-content"
+            style={{ background: `url('${item.image}') no-repeat center center` }}
+          >
+            <div className="inner">
+              <h1>{item.title}</h1>
+              <p>{item.description}</p>
+              <button className="btn btn-primary">{item.button}</button>
+            </div>
           </div>
-        </div>
-      </Container> */}
+        ))}
+      </Slider>
+   
        <Container component="section" className="section-50 section-md-bottom-50 bg-wild-wand">
         <Container component="div"   >
           <Skius />

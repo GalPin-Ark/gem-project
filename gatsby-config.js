@@ -16,7 +16,7 @@ module.exports = {
         link: '/about-us'
       },
       {
-        name: 'Contact US',
+        name: 'Contact Us',
         link: '/contact-us'
       },
     ],
@@ -55,6 +55,5 @@ module.exports = {
       },
     },
     "gatsby-plugin-stripe",
-
   ],
 }
