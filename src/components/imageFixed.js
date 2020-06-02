@@ -10,7 +10,7 @@ const ImageFixed = function (props) {
       query {
       images: allFile(filter:{ extension: { regex: "/jpeg|jpg|png|gif/"}}) {
       edges {
-        node {
+        node{
           extension
           relativePath
           childImageSharp {

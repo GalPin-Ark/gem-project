@@ -50,8 +50,8 @@ const AboutUs = () => {
     const clastyles = avastyles();
 
     return (
-        <Layout>
-            <SEO title="About US" />
+        <Layout page="About Us">
+            <SEO title="About Us" />
             <Breadcumb page="About Us" />
             <section className="section-50 section-md-top-50 bg-wild-wand">
 
@@ -188,7 +188,7 @@ const AboutUs = () => {
 
                     </div>
                 </div>
-
+        
             </section>
 
         </Layout>

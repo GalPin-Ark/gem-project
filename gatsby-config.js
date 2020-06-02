@@ -3,8 +3,8 @@ require("dotenv").config({
 })
 module.exports = {
   siteMetadata: {
-    title: `gem-project`,
-    description: `Gem  Project`,
+    title: `gats-by-code`,
+    description: `gats-by-code`,
     author: `@GalPin-Ark`,
     menuLinks: [
       {
@@ -16,7 +16,7 @@ module.exports = {
         link: '/about-us'
       },
       {
-        name: 'Contact US',
+        name: 'Contact Us',
         link: '/contact-us'
       },
     ],
@@ -53,8 +53,6 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`,
       },
-    },
-    "gatsby-plugin-stripe",
-
+    }
   ],
 }

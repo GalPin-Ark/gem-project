@@ -59,6 +59,8 @@ typings/
 # gatsby files
 .cache/
 public
+public/
+.cache
 
 # Mac files
 .DS_Store
@@ -74,3 +76,6 @@ yarn-error.log
 
 package-lock.json
 yarn.lock
+cypress/videos/
+cypress/screenshots/
+*.mp4

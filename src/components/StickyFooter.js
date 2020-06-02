@@ -14,14 +14,14 @@ import Insta from '@material-ui/icons/Instagram'
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary">
-            
+
             {new Date().getFullYear()}
             {'. '}
             {'Copyright © '}
-           
+
                 Two Fish Travel. All rights reserved.
-      {' '}
-      <Link color="inherit" href="https://material-ui.com/">
+            {' '}
+            <Link color="inherit" href="https://material-ui.com/">
                 Developed by UnoZero Code SA de CV.
       </Link>
         </Typography>
@@ -49,28 +49,30 @@ export default function StickyFooter() {
             <CssBaseline />
             <footer>
 
-                <Container maxWidth="md" className="row justify-content-center" >
+                <section className="container " >
+                    <div className="row justify-content-center">
 
-                    <div className="col-sm-12 col-lg-6 text-center">
-                        <ImageFixed src="logo.png" />
-                        <Typography className="col-12" variant="body1">My sticky footer can be found here.</Typography>
-                    </div>
+                        <div className="col-12 col-lg-6 text-center pb-3 ">
+                            <ImageFixed src="logo.png" />
+                            <Typography className="col-12" variant="body1">My sticky footer can be found here.</Typography>
+                        </div>
 
-                    <div className="col-sm-12 col-lg-6 text-center">
-                        <Typography className="col-12" variant="body1">Deserunt tempor ullamco do commodo officia.</Typography>
-                        <Box m={1}>
-                            <span className="material-icons pr-1"><Face /></span>
-                            <span className="material-icons pr-1"><Insta /></span>
-                            <span className="material-icons pr-1"><Twi /></span>
-                            <span className="material-icons pr-1"><What /></span>
-                        </Box>
-                    </div>
+                        <div className="col-12 col-lg-6 text-center pb-3 ">
+                            <Typography className="col-12" variant="body1">Deserunt tempor ullamco do commodo officia.</Typography>
+                            <Box m={1}>
+                                <span className="material-icons pr-1"><Face /></span>
+                                <span className="material-icons pr-1"><Insta /></span>
+                                <span className="material-icons pr-1"><Twi /></span>
+                                <span className="material-icons pr-1"><What /></span>
+                            </Box>
+                        </div>
 
-                    <div className="col-12 text-center">
-                        <Divider className="m-3" />
-                        <Copyright className="col-12" />
+                        <div className="col-12 text-center">
+                            <Divider className="m-3" />
+                            <Copyright className="col-12" />
+                        </div>
                     </div>
-                </Container>
+                </section>
             </footer>
         </div>
     );

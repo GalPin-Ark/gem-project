@@ -16,6 +16,24 @@ import Face from '@material-ui/icons/Facebook'
 import Twi from '@material-ui/icons/Twitter'
 import What from '@material-ui/icons/WhatsApp'
 import Insta from '@material-ui/icons/Instagram'
+import useScrollTrigger from '@material-ui/core/useScrollTrigger'
+import Slide from '@material-ui/core/Slide'
+
+function HideOnScroll(props) {
+  const { children, window } = props;
+  const trigger = useScrollTrigger({ target: window ? window() : undefined });
+
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  );
+}
+
+HideOnScroll.propTypes = {
+  children: PropTypes.element.isRequired,
+  window: PropTypes.func,
+};
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -45,7 +63,7 @@ const useStyles = makeStyles(theme => ({
     height: theme.spacing(7),
   },
 }));
-const Header = ({ siteTitle, menuLinks }) => {
+const Header = ({ props,siteTitle, menuLinks, page }) => {
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
@@ -95,10 +113,10 @@ const Header = ({ siteTitle, menuLinks }) => {
       <List className="pt-3">
         {menuLinks.map(link => (
           <Link key={link.name} style={{ textDecoration: "none" }} to={link.link}>
-          <ListItem button  style={{ background: `whitesmoke`, width: `96%` }} className="m-1 shadow-sm p-3 bg-white rounded">
-
+          <ListItem button  style={{ background: `whitesmoke`, width: `96%` }} className={`m-1 shadow-sm p-3 bg-white rounded top-menu ${link.name == page ? 'active':null}`}>
+            
               {link.name}
-
+          
           </ListItem>
           </Link>
         ))}
@@ -113,7 +131,7 @@ const Header = ({ siteTitle, menuLinks }) => {
       style={{
         paddingBottom: "3.7rem",
       }}
-    >
+    > <HideOnScroll {...props}>
       <AppBar position="fixed" style={{ backgroundColor: `#663399` }}>
         <Toolbar>
           <div >
@@ -133,7 +151,7 @@ const Header = ({ siteTitle, menuLinks }) => {
             <Box display={{ xs: 'none', sm: 'none', md: 'block' }} m={1}>
               {menuLinks.map(link => (
 
-                <Box key={link.name} component="div" display="inline" p={1} m={1} style={{ color: `white` }}><Link style={{ color: `white`, textDecoration: "none" }} to={link.link}>
+                <Box key={link.name} component="div" display="inline" p={1} m={1} style={{ color: `white` }} className={`top-menu ${link.name == page ? 'active':null}`}><Link style={{ color: `white`, textDecoration: "none"}} to={link.link} >
                   {link.name}
                 </Link>
                 </Box>
@@ -187,6 +205,7 @@ const Header = ({ siteTitle, menuLinks }) => {
           </div>
         </Toolbar>
       </AppBar>
+      </HideOnScroll>
       <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
         {sideList('left')}
       </Drawer>
@@ -202,3 +221,46 @@ Header.defaultProps = {
   siteTitle: ``,
 }
 export default Header;
+ 
+/* import { Link } from "gatsby"
+import PropTypes from "prop-types"
+import React from "react"
+
+const Header = ({ siteTitle }) => (
+  <header
+    style={{
+      background: `rebeccapurple`,
+      marginBottom: `1.45rem`,
+    }}
+  >
+    <div
+      style={{
+        margin: `0 auto`,
+        maxWidth: 960,
+        padding: `1.45rem 1.0875rem`,
+      }}
+    >
+      <h1 style={{ margin: 0 }}>
+        <Link
+          to="/"
+          style={{
+            color: `white`,
+            textDecoration: `none`,
+          }}
+        >
+          {siteTitle}
+        </Link>
+      </h1>
+    </div>
+  </header>
+)
+
+Header.propTypes = {
+  siteTitle: PropTypes.string,
+}
+
+Header.defaultProps = {
+  siteTitle: ``,
+}
+
+export default Header */
