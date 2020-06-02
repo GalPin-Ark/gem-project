@@ -16,24 +16,6 @@ import Face from '@material-ui/icons/Facebook'
 import Twi from '@material-ui/icons/Twitter'
 import What from '@material-ui/icons/WhatsApp'
 import Insta from '@material-ui/icons/Instagram'
-import useScrollTrigger from '@material-ui/core/useScrollTrigger'
-import Slide from '@material-ui/core/Slide'
-
-function HideOnScroll(props) {
-  const { children, window } = props;
-  const trigger = useScrollTrigger({ target: window ? window() : undefined });
-
-  return (
-    <Slide appear={false} direction="down" in={!trigger}>
-      {children}
-    </Slide>
-  );
-}
-
-HideOnScroll.propTypes = {
-  children: PropTypes.element.isRequired,
-  window: PropTypes.func,
-};
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -63,7 +45,7 @@ const useStyles = makeStyles(theme => ({
     height: theme.spacing(7),
   },
 }));
-const Header = ({ props,siteTitle, menuLinks, page }) => {
+const Header = ({ siteTitle, menuLinks, page }) => {
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
@@ -131,7 +113,7 @@ const Header = ({ props,siteTitle, menuLinks, page }) => {
       style={{
         paddingBottom: "3.7rem",
       }}
-    > <HideOnScroll {...props}>
+    >
       <AppBar position="fixed" style={{ backgroundColor: `#663399` }}>
         <Toolbar>
           <div >
@@ -205,7 +187,6 @@ const Header = ({ props,siteTitle, menuLinks, page }) => {
           </div>
         </Toolbar>
       </AppBar>
-      </HideOnScroll>
       <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
         {sideList('left')}
       </Drawer>
