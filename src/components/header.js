@@ -96,9 +96,9 @@ const Header = ({ siteTitle, menuLinks }) => {
         {menuLinks.map(link => (
           <Link key={link.name} style={{ textDecoration: "none" }} to={link.link}>
           <ListItem button  style={{ background: `whitesmoke`, width: `96%` }} className="m-1 shadow-sm p-3 bg-white rounded">
-            
+
               {link.name}
-          
+
           </ListItem>
           </Link>
         ))}
