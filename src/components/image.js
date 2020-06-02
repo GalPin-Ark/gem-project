@@ -2,7 +2,7 @@ import React from "react"
 import Img from 'gatsby-image';
 import { StaticQuery, graphql } from 'gatsby';
 function renderImage(file) {
-  return <Img fluid={file.node.childImageSharp.fluid} style={{ maxHeight: `35rem` }} />
+  return <Img fluid={file.node.childImageSharp.fluid} />
 }
 const Image = function (props) {
   return <StaticQuery

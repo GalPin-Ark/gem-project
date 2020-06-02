@@ -118,12 +118,10 @@ const content = [
             <div className="col-lg-6 text-center">
               <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
                 <Image src="gatsby-astronaut.png" />
-
               </div>
             </div>
           </div>
         </div>
-
       </Container>
 
       <Container component="section" maxWidth={false} className="section-50 section-md-bottom-50 bg-wild-wand">
