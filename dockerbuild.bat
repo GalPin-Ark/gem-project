@@ -1,1 +1,0 @@
-docker build --build-arg GATSBY_STRIPE_S_KEY --build-arg GATSBY_STRIPE_P_KEY -t unozerocode/gem-project .
